@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    tools:layout_editor_absoluteX="0dp"
+    tools:layout_editor_absoluteY="0dp">
 
     <TextView
         android:id="@+id/textView"
@@ -12,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="56dp"
         android:text="Caesar App"
-        android:textColor="@color/red"
+        android:textColor="@color/sky"
         android:textSize="42sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -20,25 +22,71 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout2"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginEnd="40dp"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="150dp"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_marginTop="76dp"
+        android:layout_marginEnd="40dp"
         android:hint="Enter Your Plain Text or Cipher"
-        app:endIconMode="clear_text">
+        app:endIconMode="clear_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/textView"
+            android:layout_marginTop="80dp"
+            android:inputType="text"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
 
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/cipher_btn"
+        android:layout_width="138dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="48dp"
+        android:text="Encryption"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.17"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout2"
+        android:backgroundTint="@color/red"/>
+
+    <Button
+        android:id="@+id/plain_btn"
+        android:layout_width="136dp"
+        android:layout_height="59dp"
+        android:layout_marginTop="44dp"
+        android:text="Decryption"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.56"
+        app:layout_constraintStart_toEndOf="@+id/cipher_btn"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout2"
+        android:backgroundTint="@color/black"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
+        android:hint="Result"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:enabled="false"/>
     </com.google.android.material.textfield.TextInputLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
