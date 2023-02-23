@@ -1,13 +1,12 @@
 package com.dragon.apps.caesar_app
 
-import androidx.appcompat.app.AppCompatActivity
+import CipherClass
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.widget.Button
+import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.textfield.TextInputEditText
-import com.google.android.material.textfield.TextInputLayout
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,7 +23,7 @@ class MainActivity : AppCompatActivity() {
         val res : TextInputEditText= findViewById(R.id.res)
 
         // create an object from cipher class
-        val cipher = Cipher()
+        val cipher = CipherClass()
 
         // encryption button listener
         encryption.setOnClickListener{
@@ -60,37 +59,3 @@ class MainActivity : AppCompatActivity() {
     }
 }
 
-class Cipher
-{
-    private val alpha = "abcdefghijklmnopqrstuvwxyz !@#$"
-    private var alphaLen = alpha.length
-
-    fun  encryption(plainText: String, k: Int = 4) : String
-    {
-        var plainLen = plainText.length
-        var cipher = ""
-
-        for (item in plainText)
-        {
-            cipher +=  alpha[ (k + alpha.indexOf(item)) % alphaLen ]
-        }
-        return cipher
-    }
-
-    fun  decryption(cipherText: String, k: Int = 4) : String
-    {
-        var cipherLen = cipherText.length
-        var plain = ""
-
-        for (item in cipherText)
-        {
-            var temp = (alpha.indexOf(item) - k) % alphaLen
-            if (temp < 0)
-            {
-               temp = (alphaLen + alpha.indexOf(item) - k) % alphaLen
-            }
-            plain +=  alpha[temp]
-        }
-        return plain
-    }
-}
