@@ -2,6 +2,8 @@ package com.dragon.apps.caesar_app
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import android.widget.Button
 import com.google.android.material.textfield.TextInputEditText
@@ -36,8 +38,25 @@ class MainActivity : AppCompatActivity() {
 
         // decryption button listener
         decryption.setOnClickListener{
-
+            val text =  enteredText.text.toString()
+            // get the text after encryption
+            val plainText = cipher.decryption(text, 4)
+            // display encryption text
+            res.setText(plainText)
         }
+
+        enteredText.addTextChangedListener(object : TextWatcher {
+
+            override fun afterTextChanged(s: Editable) {
+                res.setText("")
+            }
+
+            override fun beforeTextChanged(s: CharSequence, start: Int,
+                                           count: Int, after: Int) {}
+
+            override fun onTextChanged(s: CharSequence, start: Int,
+                                       before: Int, count: Int) {}
+        })
     }
 }
 
@@ -56,5 +75,22 @@ class Cipher
             cipher +=  alpha[ (k + alpha.indexOf(item)) % alphaLen ]
         }
         return cipher
+    }
+
+    fun  decryption(cipherText: String, k: Int = 4) : String
+    {
+        var cipherLen = cipherText.length
+        var plain = ""
+
+        for (item in cipherText)
+        {
+            var temp = (alpha.indexOf(item) - k) % alphaLen
+            if (temp < 0)
+            {
+               temp = (alphaLen + alpha.indexOf(item) - k) % alphaLen
+            }
+            plain +=  alpha[temp]
+        }
+        return plain
     }
 }
