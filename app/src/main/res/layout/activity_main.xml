@@ -48,7 +48,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/cipher_btn"
+        android:id="@+id/encr_btn"
         android:layout_width="138dp"
         android:layout_height="56dp"
         android:layout_marginTop="48dp"
@@ -60,14 +60,14 @@
         android:backgroundTint="@color/red"/>
 
     <Button
-        android:id="@+id/plain_btn"
+        android:id="@+id/decr_btn"
         android:layout_width="136dp"
         android:layout_height="59dp"
         android:layout_marginTop="44dp"
         android:text="Decryption"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.56"
-        app:layout_constraintStart_toEndOf="@+id/cipher_btn"
+        app:layout_constraintStart_toEndOf="@+id/encr_btn"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout2"
         android:backgroundTint="@color/black"/>
 
