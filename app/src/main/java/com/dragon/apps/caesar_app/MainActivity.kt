@@ -18,6 +18,8 @@ class MainActivity : AppCompatActivity() {
         // get the decryption button
         val decryption :Button = findViewById(R.id.decr_btn)
         // get the entered text - text input
+        val kValue: TextInputEditText= findViewById(R.id.k_value)
+        // get the entered text - text input
         val enteredText : TextInputEditText= findViewById(R.id.entered_text)
         // get the result - text input
         val res : TextInputEditText= findViewById(R.id.res)
@@ -29,19 +31,38 @@ class MainActivity : AppCompatActivity() {
         encryption.setOnClickListener{
             // get the entered text
             val text =  enteredText.text.toString()
-            // get the text after encryption
-            val cipherText = cipher.encryption(text, 4)
-            // display encryption text
-            res.setText(cipherText)
+            // get the entered k
+            val k =  kValue.text.toString()
+
+            if (k != "" && text != "")
+            {
+                // display encryption text
+                res.setText(cipher.encryption(text, k.toInt()))
+            }
+            else
+            {
+                // Error Message
+                res.setText("'Error:' Enter the text value and K value")
+            }
         }
 
         // decryption button listener
         decryption.setOnClickListener{
+            // get the entered text
             val text =  enteredText.text.toString()
-            // get the text after encryption
-            val plainText = cipher.decryption(text, 4)
-            // display encryption text
-            res.setText(plainText)
+            // get the entered k
+            val k =  kValue.text.toString()
+
+            if (k != "" && text != "")
+            {
+                // display encryption text
+                res.setText(cipher.decryption(text, k.toInt()))
+            }
+            else
+            {
+                // Error Message
+                res.setText("'Error:' Enter the text value and K value")
+            }
         }
 
         enteredText.addTextChangedListener(object : TextWatcher {
@@ -50,11 +71,8 @@ class MainActivity : AppCompatActivity() {
                 res.setText("")
             }
 
-            override fun beforeTextChanged(s: CharSequence, start: Int,
-                                           count: Int, after: Int) {}
-
-            override fun onTextChanged(s: CharSequence, start: Int,
-                                       before: Int, count: Int) {}
+            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {}
         })
     }
 }

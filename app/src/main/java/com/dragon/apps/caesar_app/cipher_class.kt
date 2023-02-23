@@ -2,7 +2,7 @@ class CipherClass {
    private val alpha = "abcdefghijklmnopqrstuvwxyz !@#$"
         private var alphaLen = alpha.length
 
-        fun  encryption(plainText: String, k: Int = 4) : String
+        fun  encryption(plainText: String, k: Int) : String
         {
             var plainLen = plainText.length
             var cipher = ""
@@ -14,7 +14,7 @@ class CipherClass {
             return cipher
         }
 
-        fun  decryption(cipherText: String, k: Int = 4) : String
+        fun  decryption(cipherText: String, k: Int) : String
         {
             var cipherLen = cipherText.length
             var plain = ""
